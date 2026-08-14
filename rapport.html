@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulaire — Rapport visite médical</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<script>
+  (function () {
+    var theme = localStorage.getItem("rvm-theme") || "classique";
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">
+      <img class="brand__logo" src="assets/logo.png" alt="Logo Rapport visite médical">
+      <span class="brand__name">Rapport visite médical</span>
+    </a>
+    <div class="header-actions">
+      <nav class="main-nav">
+        <a href="index.html">Accueil</a>
+        <a href="rapport.html" class="active">Formulaire</a>
+      </nav>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">
+        <span class="theme-toggle__icon">🌙</span>
+        <span class="theme-toggle__label">Sombre</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <div class="page__header">
+    <span class="page__eyebrow">Compte-rendu</span>
+    <h1 class="page__title">Formulaire de visite médicale</h1>
+    <p class="page__subtitle">Merci de renseigner l'ensemble des informations ci-dessous.</p>
+  </div>
+
+  <form class="form-card" id="rapport-form" novalidate>
+
+    <fieldset>
+      <legend>Identification du militaire</legend>
+      <div class="field-grid">
+        <div class="field">
+          <label for="grade">Grade</label>
+          <input type="text" id="grade" name="grade" required>
+        </div>
+        <div class="field">
+          <label for="matricule">Matricule</label>
+          <input type="text" id="matricule" name="matricule" required>
+        </div>
+        <div class="field">
+          <label for="regiment">Régiment</label>
+          <input type="text" id="regiment" name="regiment" required>
+        </div>
+        <div class="field">
+          <label for="date_visite">Date de la visite médicale</label>
+          <input type="date" id="date_visite" name="date_visite" required>
+        </div>
+        <div class="field">
+          <label for="genre">Genre</label>
+          <select id="genre" name="genre" required>
+            <option value="" disabled selected>Sélectionner...</option>
+            <option value="Homme">Homme</option>
+            <option value="Femme">Femme</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="poids">Poids <span class="hint">(kg)</span></label>
+          <input type="number" id="poids" name="poids" min="0" step="0.1" required>
+        </div>
+        <div class="field">
+          <label for="taille">Taille <span class="hint">(cm)</span></label>
+          <input type="number" id="taille" name="taille" min="0" step="1" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Examen visuel</legend>
+      <div class="field-grid">
+        <div class="field">
+          <label for="acuite_gauche">Acuité visuelle — Œil gauche <span class="hint">(0-100)</span></label>
+          <input type="number" id="acuite_gauche" name="acuite_gauche" min="0" max="100" required>
+        </div>
+        <div class="field">
+          <label for="acuite_droite">Acuité visuelle — Œil droit <span class="hint">(0-100)</span></label>
+          <input type="number" id="acuite_droite" name="acuite_droite" min="0" max="100" required>
+        </div>
+        <div class="field field--full">
+          <label>Soins administrés — Œil</label>
+          <div class="field--pair">
+            <select id="soin_oeil_type" name="soin_oeil_type" required>
+              <option value="" disabled selected>Type de soin...</option>
+              <option value="Aucun soin">Aucun soin</option>
+              <option value="2 Gouttes de collyre">2 Gouttes de collyre</option>
+            </select>
+            <select id="soin_oeil_cote" name="soin_oeil_cote" required>
+              <option value="" disabled selected>Œil concerné...</option>
+              <option value="Oeil Gauche">Œil gauche</option>
+              <option value="Oeil Droite">Œil droit</option>
+              <option value="Oeil Gauche et Droite">Œil gauche et droit</option>
+              <option value="Aucun Oeil">Aucun œil</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Examen Auditif</legend>
+      <div class="field-grid">
+        <div class="field">
+          <label for="acuite_auditive_gauche">Acuité auditive — Tympan gauche <span class="hint">(0-100)</span></label>
+          <input type="number" id="acuite_auditive_gauche" name="acuite_auditive_gauche" min="0" max="100" required>
+        </div>
+        <div class="field">
+          <label for="acuite_auditive_droite">Acuité auditive — Tympan droit <span class="hint">(0-100)</span></label>
+          <input type="number" id="acuite_auditive_droite" name="acuite_auditive_droite" min="0" max="100" required>
+        </div>
+        <div class="field field--full">
+          <label>Soins administrés — Tympan</label>
+          <div class="field--pair">
+            <select id="soin_tympan_type" name="soin_tympan_type" required>
+              <option value="" disabled selected>Type de soin...</option>
+              <option value="Aucun soin">Aucun soin</option>
+              <option value="Sérum Physiologique">Sérum Physiologique</option>
+            </select>
+            <select id="soin_tympan_cote" name="soin_tympan_cote" required>
+              <option value="" disabled selected>Tympan concerné...</option>
+              <option value="Tympan Gauche">Tympan gauche</option>
+              <option value="Tympan Droite">Tympan droit</option>
+              <option value="Tympan Gauche et Droite">Tympan gauche et droit</option>
+              <option value="Aucun Tympan">Aucun tympan</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Examen Buccal</legend>
+      <div class="field-grid">
+        <div class="field">
+          <label for="amygdales">Amygdales <span class="hint">(0-100)</span></label>
+          <input type="number" id="amygdales" name="amygdales" min="0" max="100" required>
+        </div>
+        <div class="field">
+          <label for="ganglions">Ganglions <span class="hint">(0-100)</span></label>
+          <input type="number" id="ganglions" name="ganglions" min="0" max="100" required>
+        </div>
+        <div class="field field--full">
+          <label for="soin_buccal">Soins administrés — Buccaux</label>
+          <select id="soin_buccal" name="soin_buccal" required>
+            <option value="" disabled selected>Sélectionner...</option>
+            <option value="Aucun soin">Aucun soin</option>
+            <option value="Prescription d'Antibiotique">Prescription d'Antibiotique</option>
+            <option value="Prise de Sang">Prise de Sang</option>
+            <option value="Prescription d'Antibiotique et Prise de Sang">Prescription d'Antibiotique et Prise de Sang</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Examen cardio-vasculaire</legend>
+      <div class="field-grid">
+        <div class="field">
+          <label for="reflex_gauche">Réflexe genou / visuel — Gauche <span class="hint">(0-100)</span></label>
+          <input type="number" id="reflex_gauche" name="reflex_gauche" min="0" max="100" required>
+        </div>
+        <div class="field">
+          <label for="reflex_droite">Réflexe genou / visuel — Droit <span class="hint">(0-100)</span></label>
+          <input type="number" id="reflex_droite" name="reflex_droite" min="0" max="100" required>
+        </div>
+        <div class="field">
+          <label for="pression">Pression artérielle <span class="hint">(0-100)</span></label>
+          <input type="number" id="pression" name="pression" min="0" max="100" required>
+        </div>
+        <div class="field">
+          <label for="frequence_cardiaque">Fréquence cardiaque <span class="hint">(0-100)</span></label>
+          <input type="number" id="frequence_cardiaque" name="frequence_cardiaque" min="0" max="100" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Médecin examinateur</legend>
+      <div class="field-grid">
+        <div class="field">
+          <label for="matricule_medecin">Matricule du médecin</label>
+          <input type="text" id="matricule_medecin" name="matricule_medecin" required>
+        </div>
+        <div class="field">
+          <label for="regiment_medecin">Régiment du médecin</label>
+          <input type="text" id="regiment_medecin" name="regiment_medecin" required>
+        </div>
+        <div class="field field--full">
+          <label for="grade_medecin">Grade médical du médecin</label>
+          <input type="text" id="grade_medecin" name="grade_medecin" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="form-actions">
+      <button type="submit" class="btn">Valider le rapport</button>
+    </div>
+  </form>
+
+  <div class="confirmation" id="confirmation">
+    Rapport validé avec succès.
+    <div class="fiche-result">
+      <img id="fiche-preview" alt="Fiche médicale générée" hidden>
+      <a id="fiche-download" class="btn" download="fiche_medicale.png" hidden>Télécharger la fiche</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  Rapport visite médical
+</footer>
+
+<script src="theme.js"></script>
+<script src="assets/fiche-template.js"></script>
+<script src="generate-fiche.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

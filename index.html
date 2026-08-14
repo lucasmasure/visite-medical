@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapport visite médical</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<script>
+  (function () {
+    var theme = localStorage.getItem("rvm-theme") || "classique";
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="index.html">
+      <img class="brand__logo" src="assets/logo.png" alt="Logo Rapport visite médical">
+      <span class="brand__name">Rapport visite médical</span>
+    </a>
+    <div class="header-actions">
+      <nav class="main-nav">
+        <a href="index.html" class="active">Accueil</a>
+        <a href="rapport.html">Formulaire</a>
+      </nav>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">
+        <span class="theme-toggle__icon">🌙</span>
+        <span class="theme-toggle__label">Sombre</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="hero">
+  <div class="hero__ring hero__ring--1"></div>
+  <div class="hero__ring hero__ring--2"></div>
+
+  <div class="hero__card">
+    <img class="hero__logo" src="assets/logo.png" alt="Logo Rapport visite médical">
+    <h1 class="hero__title">Rapport visite médical</h1>
+    <div class="hero__divider"></div>
+    <p class="hero__subtitle">
+      Enregistrez et consultez les comptes-rendus des visites médicales du régiment :
+      identification, examens et soins administrés en un seul formulaire.
+    </p>
+    <a class="btn" href="rapport.html">Accéder au formulaire</a>
+
+    <div class="hero__features">
+      <div class="feature">
+        <div class="feature__title">Identification</div>
+        <div class="feature__text">Grade, matricule et régiment du militaire visité.</div>
+      </div>
+      <div class="feature">
+        <div class="feature__title">Examens</div>
+        <div class="feature__text">Acuité visuelle, réflexes, tension et fréquence cardiaque.</div>
+      </div>
+      <div class="feature">
+        <div class="feature__title">Suivi médical</div>
+        <div class="feature__text">Soins administrés et informations du médecin traitant.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  Rapport visite médical
+</footer>
+
+<script src="theme.js"></script>
+</body>
+</html>
